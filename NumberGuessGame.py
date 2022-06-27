@@ -23,33 +23,34 @@ def game_hints(USER_GUESS, Mystery_NUM):
             value = "larger"
         print(f"CLUE: Mystery Number is {divisibility} and try a {value} guess")     
     else:
+        player_stats()
         pass    
   
-def Game_Process():
- global ROUNDS
+def Game_Process(): 
+    global ROUNDS
 
- while True:
-  if ROUNDS <= 10:   
-    Mystery_NUM = random.randrange(10)
-    print(Mystery_NUM)
     while True:
-        print("------------------------")
-        print("Guess the Mystery Number [1-10]: ")
-        USER_GUESS = int(input())
-        if USER_GUESS == Mystery_NUM:
-            print("\nGood Job! +10 points!")
-            global SCORE
-            SCORE = SCORE + 10
-            ROUNDS += 1
-            player_stats()    
-            break
+        if ROUNDS <= 10:   
+            Mystery_NUM = random.randrange(10)
+            print(Mystery_NUM)
+            while True:
+                print("------------------------")
+                print("Guess the Mystery Number [1-10]: ")
+                USER_GUESS = int(input())
+                if USER_GUESS == Mystery_NUM:
+                    print("\nGood Job! +10 points!")
+                    global SCORE
+                    SCORE = SCORE + 10
+                    ROUNDS += 1
+                    player_stats()    
+                    break
+                else:
+                    print("Wrong! Try Again")
+                    SCORE = SCORE - 2
+                    game_hints(USER_GUESS, Mystery_NUM)
         else:
-            print("Wrong! Try Again")
-            SCORE = SCORE - 2
-            game_hints(USER_GUESS, Mystery_NUM)
-  else:
-    print("Game Over!")
-    Game()        
+            print("Game Over!")
+            Game()        
 
 def Game():
     user_opt = input("\"Welcome to Guess Game\" \nPress [Y] to Play or [N] to Exit: ").lower()
@@ -66,5 +67,6 @@ def Game():
     else:
         print("Invalid Input! [1/2]")
         Game()
+    
 Game()
         
