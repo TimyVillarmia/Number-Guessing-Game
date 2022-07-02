@@ -27,7 +27,7 @@ def game_hints():
         
 def scoreboard_sort(line):
     player_data = line.split('|')
-    player_score = int(player_data[-1])
+    player_score = int(player_data[-1]) #get the last index of the array
     return player_score      
     
 def game_scoreboard():
